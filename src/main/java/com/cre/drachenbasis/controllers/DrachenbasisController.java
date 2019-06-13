@@ -93,7 +93,7 @@ public class DrachenbasisController {
 	@Autowired
 	RFIDRepository rfidRepository;	
 
-    private static final SimpleDateFormat initDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+    private SimpleDateFormat initDateFormat = new SimpleDateFormat("dd.MM.yyyy");
     private static final Logger log = LoggerFactory.getLogger(DrachenbasisController.class);
     
     @GetMapping("/drachen")
@@ -364,15 +364,19 @@ public class DrachenbasisController {
 		hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.Q);
 		QRCodeWriter qrCodeWriter = new QRCodeWriter();
 		BitMatrix byteMatrix = null;
+		int matrixWidth = 0;
 		try {
 			byteMatrix = qrCodeWriter.encode(text,
 					BarcodeFormat.QR_CODE, 230, 230, hintMap);
+		        // Make the BufferedImage that are to hold the QRCode
+		        matrixWidth = byteMatrix.getWidth();
 		} catch (WriterException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
-		// Make the BufferedImage that are to hold the QRCode
-		int matrixWidth = byteMatrix.getWidth();
 		BufferedImage image = new BufferedImage(matrixWidth, matrixWidth,
 				BufferedImage.TYPE_INT_RGB);
 		image.createGraphics();

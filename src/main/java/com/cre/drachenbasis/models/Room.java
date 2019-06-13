@@ -63,7 +63,7 @@ public class Room {
     @Override
     public String toString() {
         return String.format(
-                "Room[id=%s, Name='%s', Name='%s']",
+                "Room[id=%s, Name='%s']",
                 id, name);
     }
 

@@ -83,9 +83,9 @@ public class ScheduledTasks {
 	
 	private static final Logger log = LoggerFactory.getLogger(ScheduledTasks.class);
 
-    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
-    private static final SimpleDateFormat initDateFormat = new SimpleDateFormat("dd.MM.yyyy");
-    private static final SimpleDateFormat snapshotFormat = new SimpleDateFormat("dd.MM.yyyy_HH.mm.ss");
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+    private SimpleDateFormat initDateFormat = new SimpleDateFormat("dd.MM.yyyy");
+    private SimpleDateFormat snapshotFormat = new SimpleDateFormat("dd.MM.yyyy_HH.mm.ss");
 
     public void insertDragonsInRoom(String room_name,Set<String> qrContent) {
     	String _method = "insertDragonsInRooms";

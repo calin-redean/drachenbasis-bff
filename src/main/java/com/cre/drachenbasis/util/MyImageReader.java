@@ -39,14 +39,15 @@ public class MyImageReader
     public static int[] imgDimension(String fileName){
         BufferedImage image = null;
         int[] stat = new int[3];
-
-        image = readImageIntoBufferedImage(fileName);
-        WritableRaster raster = image.getRaster();
-
-        stat[0] = raster.getNumBands();
-        stat[1] = raster.getHeight();
-        stat[2] = raster.getWidth();
-
+ 	try{
+         image = readImageIntoBufferedImage(fileName);
+         WritableRaster raster = image.getRaster();
+         stat[0] = raster.getNumBands();
+         stat[1] = raster.getHeight();
+         stat[2] = raster.getWidth();
+	}catch(Exception e){
+	  e.printStackTrace();
+	}
         return stat;
     } 
     public static int[] imgDimension(BufferedImage image){
